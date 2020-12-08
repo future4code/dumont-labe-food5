@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { baseUrl } from '../constants/baseUrl'
+import { useRequestData } from '../hooks/useRequestData'
 
 const PageContainer = styled.div`
   display: flex;
@@ -60,6 +62,10 @@ const BottomBar = styled.div`
 `;
 
 function FeedPage() {
+
+  const feed = useRequestData(`${baseUrl}/restaurants`, [])
+  console.log(feed)
+
   return (
     <PageContainer>
       <h4>4Food</h4>

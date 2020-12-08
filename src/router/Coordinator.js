@@ -15,7 +15,8 @@ export const goBack = (history) => {
 export const goToSignUpPage = (history) => {
     history.push("/signup")
 }
-  
-export const goToFeed = (history) => {
+
+export const goToFeedPage = (history) => {
     history.push("/feed")
 }
+  
