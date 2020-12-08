@@ -1,65 +1,9 @@
 import React from "react";
-import styled from "styled-components";
-import { baseUrl } from '../constants/baseUrl'
-import { useRequestData } from '../hooks/useRequestData'
+import { PageContainer, InputStyle, FilterContainer, CardImg, CardContainer, CardDetail, BottomBar} from "./styled";
+import { baseUrl } from '../../constants/baseUrl'
+import { useRequestData } from '../../hooks/useRequestData'
 
-const PageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 22.5rem;
-  height: 40rem;
-`;
 
-const InputStyle = styled.input`
-  width: 20.5rem;
-  height: 3.5rem;
-  padding: 1rem 0.503rem 1rem 1.063rem;
-  border-radius: 2px;
-  border: solid 1px #b8b8b8;
-`;
-
-const FilterContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-  width: 22.5rem;
-  height: 2.625rem;
-  margin: 0.5rem 0 0;
-  padding: 0.75rem 0 0.75rem 1rem;
-`;
-
-const CardImg = styled.img`
-  width: 20.5rem;
-  height: 7.5rem;
-  margin: 0 0 0.75rem;
-  object-fit: contain;
-`;
-
-const CardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 20.5rem;
-  height: 11.75rem;
-  padding: 0 0 1rem;
-  border-radius: 8px;
-  border: solid 1px #b8b8b8;
-`;
-const CardDetail = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const BottomBar = styled.div`
-  display: flex;
-  justify-content: space-around;
-  width: 22.5rem;
-  height: 3.063rem;
-  margin: 0.813rem 0 0;
-  box-shadow: 0 -1px 3px 0 rgba(0, 0, 0, 0.2),
-    0 -2px 1px -1px rgba(0, 0, 0, 0.12), 0 -1px 1px 0 rgba(0, 0, 0, 0.14);
-  background-color: #ffffff;
-  position: sticky;
-`;
 
 function FeedPage() {
 
