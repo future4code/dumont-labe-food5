@@ -19,7 +19,6 @@ export function AddAddressPage() {
         <Input label="Bairro" placeholder="Bairro" type="text" />
         <Input label="Cidade" placeholder="Cidade" type="text" />
         <Input label="Estado" placeholder="Estado" type="text" />
-
         <Button text="Criar" />
       </LoginPageContainer>
     </div>
