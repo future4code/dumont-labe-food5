@@ -1,25 +1,17 @@
-import React from 'react';
-
+import React from "react";
 
 function ProfilePage() {
   return (
     <div>
       Meu perfil
-      <hr/>
+      <hr />
+      <div>Editar informações pessoais (ProfileEditUserPage)</div>
+      <div>Endereço cadastrado (ProfilePageEditAdress)</div>
       <div>
-          Editar informações pessoais (ProfileEditUserPage) 
+        Histórico de pedidos
+        <hr />
+        <div>Você não realizou nenhum pedido</div>
       </div>
-      <div>
-          Endereço cadastrado (ProfilePageEditAdress)
-      </div>
-      <div>
-          Histórico de pedidos
-          <hr/>
-          <div>
-              Você não realizou nenhum pedido
-          </div>
-      </div>
-      
     </div>
   );
 }

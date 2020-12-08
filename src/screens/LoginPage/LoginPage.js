@@ -4,11 +4,14 @@ import { Input } from "../../components/Input/Input";
 import { LoginPageContainer, Logo } from "./styled-LoginPage";
 import { Button } from "../../components/Button/Button";
 import { Header } from "../../components/Header/Header";
+import { goToSignUpPage } from "../../router/Coordinator";
+import { useHistory } from "react-router-dom";
+
+// Página de Login do Usuário
 export function LoginPage() {
-  // Página de Login do Usuário
+  const history = useHistory()
   return (
-    <div>
-      <Header />
+
       <LoginPageContainer>
         <Logo src={logoIFuture} />
         <h1>Entrar</h1>
@@ -20,9 +23,9 @@ export function LoginPage() {
         />
         <Button text="Entrar" />
         <p>
-          Não possui cadastro? <strong>Clique aqui.</strong>
+          Não possui cadastro? <strong onClick={()=>goToSignUpPage(history)}>Clique aqui.</strong>
         </p>
       </LoginPageContainer>
-    </div>
+    
   );
 }
