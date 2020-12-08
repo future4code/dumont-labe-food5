@@ -1,13 +1,15 @@
 import logoIFuture from "../../assets/iFuture-red-logo.svg";
-import React from "react";
+import React, { useContext } from "react";
 import { Input } from "../../components/Input/Input";
 import { Button } from "../../components/Button/Button";
 import { LoginPageContainer } from "../LoginPage/styled-LoginPage";
 import { Header } from "../../components/Header/Header";
+import GlobalStateContext from "../../global/GlobalStateContext";
 
 // Página de Adicionar Endereço no Cadastro
 
 export function AddAddressPage() {
+  const {requests} = useContext(GlobalStateContext)
   return (
     <div>
       <Header />
@@ -19,7 +21,7 @@ export function AddAddressPage() {
         <Input label="Bairro" placeholder="Bairro" type="text" />
         <Input label="Cidade" placeholder="Cidade" type="text" />
         <Input label="Estado" placeholder="Estado" type="text" />
-        <Button text="Criar" />
+        <Button text="Criar"/>
       </LoginPageContainer>
     </div>
   );
