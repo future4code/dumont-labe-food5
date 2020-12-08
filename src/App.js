@@ -1,3 +1,4 @@
+
 import React from 'react';
 import './App.css';
 import FeedPage from './screens/feedPage'
@@ -7,6 +8,7 @@ function App() {
   return (
     <div className="App">
       <RestaurantDetailsPage />
+
 
     </div>
   );

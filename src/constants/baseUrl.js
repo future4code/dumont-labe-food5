@@ -1,1 +1,2 @@
-export const baseUrl = "https://us-central1-missao-newton.cloudfunctions.net/labe-food"
+export const baseUrl =
+  "https://us-central1-missao-newton.cloudfunctions.net/labe-food";
