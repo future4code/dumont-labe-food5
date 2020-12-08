@@ -18,6 +18,7 @@ export const ButtonContainer = styled.button`
   text-align: center;
   color: var(--black);
   border: none;
+  cursor:pointer;
   :hover {
     background-color: rgba(232, 34, 46, 0.5);
   }
