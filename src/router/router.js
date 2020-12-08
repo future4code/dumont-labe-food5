@@ -5,10 +5,10 @@ import React from "react";
 import { AddAddressPage } from "../screens/AddAddresPage/AddAddressPage";
 import { SignUpPage } from "../screens/SignUpPage/SignUpPage";
 import CartPage from "../screens/CartPage";
-import FeedPage from "../screens/feedPage";
+import FeedPage from "../screens/feedPage/feedPage";
 import ProfileEditUserPage from "../screens/ProfileEditUserPage";
 import ProfilePageEditAdress from "../screens/ProfilePageEditAdress";
-import RestaurantDetailsPage from "../screens/RestaurantDetailsPage";
+import RestaurantDetailsPage from "../screens/RestaurantDetailsPage/RestaurantDetailsPage";
 export function Router() {
   return (
     <BrowserRouter>

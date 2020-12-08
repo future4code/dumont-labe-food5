@@ -3,12 +3,11 @@ import axios from 'axios';
 import GlobalStateContext from './GlobalStateContext';
 import { baseUrl } from '../constants/baseUrl';
 import { useHistory } from 'react-router-dom';
-import { goToFeed } from '../router/Coordinator';
+import { goToFeedPage } from '../router/Coordinator';
 
 const GlobalState = (props) => {
     const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    
+    const [password, setPassword] = useState("")   
     
 // Request que faz o login
     const postLogin = (history) => {
@@ -23,7 +22,6 @@ const GlobalState = (props) => {
             localStorage.setItem("token", resposta.data.token)
             alert("LOGIN FEITO COM SUCESSO")
             // Se a requisição funcionar, o usuário é direcionado até o feed
-            goToFeed(history)
 		}).catch((err) => {
 			console.log("Erro Request postLogin",err.message)
         });
