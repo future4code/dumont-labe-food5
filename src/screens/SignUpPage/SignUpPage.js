@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom"
 import { useEffect } from "react";
 import { baseUrl } from "../../constants/baseUrl"
 import { useForm } from "../../hooks/useForm";
+import { signup } from "../../services/user"
 
 export function SignUpPage() {
   // Página de SignUp do usuário
