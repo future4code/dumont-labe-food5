@@ -36,7 +36,7 @@ export function SignUpPage() {
               placeholder="Nome e sobrenome" 
               type="text" 
               required
-              // value={form.name} 
+              value={form.name} 
               onChange={handleInputChange} 
             />
             <Input 
@@ -44,13 +44,13 @@ export function SignUpPage() {
               placeholder="email@email.com" 
               type="email" 
               required
-              // value={form.email} 
+              value={form.email} 
               onChange={handleInputChange} 
             />
             <Input 
               label="CPF" 
               placeholder="000.000.000-00" 
-              // value={form.cpf}
+              value={form.cpf}
               required
               onChange={handleInputChange} 
             />
@@ -59,7 +59,7 @@ export function SignUpPage() {
               placeholder="Mínimo 6 caracteres"
               type="password"
               required
-              // value={form.password}
+              value={form.password}
               onChange={handleInputChange}
             />
             <Input
@@ -67,7 +67,7 @@ export function SignUpPage() {
               placeholder="Confirme a senha anterior"
               type="password"
               required
-              // value={form.password}
+              value={form.password}
               onChange={handleInputChange}
             />
             <Button text="Criar" type="submit" />
