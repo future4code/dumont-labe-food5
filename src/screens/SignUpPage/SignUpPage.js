@@ -1,12 +1,13 @@
 import logoIFuture from "../../assets/iFuture-red-logo.svg";
 import React from "react";
-import { Input } from "../../components/Input/Input";
 import { Button } from "../../components/Button/Button";
 import { LoginPageContainer } from "../LoginPage/styled-LoginPage";
 import { Header } from "../../components/Header/Header";
 import { useHistory } from "react-router-dom"
 import { useForm } from "../../hooks/useForm";
 import { signup } from "../../services/user"
+import {TextField} from "@material-ui/core"
+import { FormContainer, Title, InputContainer } from "./styled-SignUpPage";
 
 export function SignUpPage() {
   // Página de SignUp do usuário
@@ -29,49 +30,65 @@ export function SignUpPage() {
       <Header />
       <LoginPageContainer>
         <img src={logoIFuture} alt="Logo 4Food"/>
-        <h1>Cadastrar</h1>
-        <form onSubmit={handleSubmission} >
-            <Input 
+        <Title>Cadastrar</Title>
+        <FormContainer onSubmit={handleSubmission} >
+            <TextField 
               label="Nome" 
+              variant="outlined"
               placeholder="Nome e sobrenome" 
               type="text" 
               required
               value={form.name} 
               onChange={handleInputChange} 
+              name="name"
+              style={{margin:'8px 0'}}
             />
-            <Input 
+            <TextField 
               label="E-mail" 
               placeholder="email@email.com" 
+              variant="outlined"
               type="email" 
               required
               value={form.email} 
-              onChange={handleInputChange} 
+              onChange={handleInputChange}
+              name="email"
+              style={{margin:'8px 0'}}
             />
-            <Input 
+            <TextField 
               label="CPF" 
               placeholder="000.000.000-00" 
+              variant="outlined"
               value={form.cpf}
               required
-              onChange={handleInputChange} 
+              onChange={handleInputChange}
+              name="cpf"
+              pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
+              style={{margin:'8px 0'}}
             />
-            <Input
+            <TextField
               label="Senha"
               placeholder="Mínimo 6 caracteres"
+              variant="outlined"
               type="password"
               required
               value={form.password}
               onChange={handleInputChange}
+              name="password"
+              style={{margin:'8px 0'}}
             />
-            <Input
+            <TextField
               label="Confirmar"
               placeholder="Confirme a senha anterior"
+              variant="outlined"
               type="password"
               required
               value={form.password}
               onChange={handleInputChange}
+              name="confirm-password"
+              style={{margin:'8px 0'}}
             />
             <Button text="Criar" type="submit" />
-        </form>
+        </FormContainer>
       </LoginPageContainer>
     </div>
   );
