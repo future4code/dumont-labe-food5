@@ -7,13 +7,13 @@ export function RestaurantCard(props) {
   
   return (
     <ContainerRestaurantCard>
-    <img src="https://especiais.estadao.com.br/rotapaladar/wp-content/uploads/sites/115/2018/11/Bullguer-Mr-Belly-o-Lucas-Terribili-2-1.jpg"/>
+    <img src={props.logoUrl}/>
     <ContainerInfos>
-        <h2>Bullguer Vila Madalena</h2>
+        <h2>{props.name}</h2>
     
         <div>
-            <p>30-45 min</p>
-            <p>Frete R$60</p>
+            <p>{props.deliveryTime} min</p>
+            <p>Frete R${props.shipping}</p>
         </div>
     </ContainerInfos>
     </ContainerRestaurantCard>
