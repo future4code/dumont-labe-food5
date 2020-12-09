@@ -4,6 +4,7 @@ import GlobalStateContext from './GlobalStateContext';
 import { baseUrl } from '../constants/baseUrl';
 import { useHistory } from 'react-router-dom';
 import { goToFeedPage } from '../router/Coordinator';
+import ProfileEditUserPage from '../screens/ProfileEditUserPage';
 
 const GlobalState = (props) => {
     const [email, setEmail] = useState("")
@@ -13,8 +14,9 @@ const GlobalState = (props) => {
     // Estado com produtos do restaurante escolhido
     const [restaurantProducts, setRestaurantProducts] = useState([])
       // Estado com detalhes do restaurante escolhido
-      const [restaurantDetails, setRestaurantDetails] = useState([])
-
+    const [restaurantDetails, setRestaurantDetails] = useState([])
+      //Estado com os dados do perfil
+    const [profileData, setProfileData] = useState({})
 
     // Variável com o token do localStorage
     const token = localStorage.getItem("token")
@@ -43,12 +45,11 @@ const GlobalState = (props) => {
         
        
         
-  };
-  
+  }; 
   
   // Request de pegar os restaurantes
 
-  const getRestaurants = (history) => {
+  const getRestaurants = () => {
     axios.get(`${baseUrl}/restaurants`, auth)
     .then((resposta)=>{
       // Requisição seta estado restaurants com todos os restaurantes 
@@ -73,10 +74,21 @@ const GlobalState = (props) => {
       
     })
   }
-    
-    const states = {email, password, restaurants, restaurantProducts, restaurantDetails};
-    const setters = {setEmail, setPassword};
-    const requests = {postLogin, getRestaurants, getRestaurantDetails};
+
+  // Request para pegar dados do perfil
+  
+  const getProfileData = () => {
+    axios.get(`${baseUrl}/profile`, auth)
+    .then((response)=>{
+      setProfileData(response.data.user)
+    }).catch((err) => {
+      console.log(err.message)
+    })
+  }
+
+    const states = {email, password, restaurants, restaurantProducts, restaurantDetails, profileData};
+    const setters = {setEmail, setPassword, setProfileData};
+    const requests = {postLogin, getRestaurants, getRestaurantDetails, getProfileData};
   
     const data = { states, setters, requests };
     return (

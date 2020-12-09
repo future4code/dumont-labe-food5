@@ -3,9 +3,11 @@ import { useHistory, useParams } from "react-router-dom";
 import { Header } from "../../components/Header/Header";
 import { ItemCard } from "../../components/ItemCard/ItemCard";
 import GlobalStateContext from "../../global/GlobalStateContext";
+import { useProtectPage } from "../../hooks/useProtectPage";
 import { PageContainer, CardImg, CardContainer, CardDetail, RestaurantDetailsContainer} from './styled'
 
 function RestaurantDetailsPage() {
+  useProtectPage();
   const pathParams = useParams()
   const history = useHistory()
   const {states, setters, requests} = useContext(GlobalStateContext)
