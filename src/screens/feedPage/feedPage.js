@@ -4,10 +4,13 @@ import { baseUrl } from '../../constants/baseUrl'
 import { useRequestData } from '../../hooks/useRequestData'
 import { RestaurantCard } from "../../components/RestaurantCard/RestaurantCard";
 import GlobalStateContext from "../../global/GlobalStateContext";
+import { goToRestaurant } from "../../router/Coordinator";
+import { useHistory } from "react-router-dom";
 
 
 
 function FeedPage() {
+  const history = useHistory()
   const {states, setters, requests} = useContext(GlobalStateContext)
   useEffect(() => {
     requests.getRestaurants()
@@ -16,7 +19,7 @@ function FeedPage() {
   // console.log(feed) 
   const renderRestaurants = states.restaurants.map((rest)=>{
     return(
-      <RestaurantCard logoUrl={rest.logoUrl} shipping={rest.shipping} name={rest.name} deliveryTime={rest.deliveryTime}/>
+      <RestaurantCard logoUrl={rest.logoUrl} shipping={rest.shipping} name={rest.name} deliveryTime={rest.deliveryTime} onClick={()=>goToRestaurant(history, rest.id)}/>
     )
   })
   return (

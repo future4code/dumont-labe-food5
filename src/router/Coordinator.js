@@ -20,3 +20,6 @@ export const goToFeedPage = (history) => {
     history.push("/feed")
 }
   
+export const goToRestaurant = (history, id) => {
+    history.push(`/restaurantdetails/${id}`)
+}

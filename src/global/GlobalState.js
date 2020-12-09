@@ -10,6 +10,10 @@ const GlobalState = (props) => {
     const [password, setPassword] = useState("") 
       // Estado com todos os restaurantes
     const [restaurants, setRestaurants] = useState([])
+    // Estado com produtos do restaurante escolhido
+    const [restaurantProducts, setRestaurantProducts] = useState([])
+      // Estado com detalhes do restaurante escolhido
+      const [restaurantDetails, setRestaurantDetails] = useState([])
 
 
     // Variável com o token do localStorage
@@ -55,10 +59,24 @@ const GlobalState = (props) => {
       
     })
   }
+
+  // Resquest de pegar os detalhes do Restaurante
+
+  const getRestaurantDetails = (id) => {
+    axios.get(`${baseUrl}/restaurants/${id}`, auth)
+    .then((resposta)=>{
+      setRestaurantProducts(resposta.data.restaurant.products)
+      console.log("Resposta requisição getRestaurantDetails", resposta.data.restaurant)
+      setRestaurantDetails(resposta.data.restaurant)
+    }).catch((err)=> {
+      console.log("Erro Request GetRestaurantDetails")
+      
+    })
+  }
     
-    const states = {email, password, restaurants};
+    const states = {email, password, restaurants, restaurantProducts, restaurantDetails};
     const setters = {setEmail, setPassword};
-    const requests = {postLogin, getRestaurants};
+    const requests = {postLogin, getRestaurants, getRestaurantDetails};
   
     const data = { states, setters, requests };
     return (
