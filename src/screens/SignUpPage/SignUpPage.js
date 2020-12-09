@@ -1,13 +1,12 @@
 import logoIFuture from "../../assets/iFuture-red-logo.svg";
 import React from "react";
 import { Button } from "../../components/Button/Button";
-import { LoginPageContainer } from "../LoginPage/styled-LoginPage";
 import { Header } from "../../components/Header/Header";
 import { useHistory } from "react-router-dom"
 import { useForm } from "../../hooks/useForm";
 import { signup } from "../../services/user"
 import {TextField} from "@material-ui/core"
-import { FormContainer, Title, InputContainer } from "./styled-SignUpPage";
+import { FormContainer, Title, LogoSignUp, Wrapper, SignUpPageContainer } from "./styled-SignUpPage";
 
 export function SignUpPage() {
   // Página de SignUp do usuário
@@ -26,10 +25,10 @@ export function SignUpPage() {
   }
 
   return (
-    <div>
+    <Wrapper>
       <Header />
-      <LoginPageContainer>
-        <img src={logoIFuture} alt="Logo 4Food"/>
+      <SignUpPageContainer>
+        <LogoSignUp src={logoIFuture} alt="Logo 4Food"/>
         <Title>Cadastrar</Title>
         <FormContainer onSubmit={handleSubmission} >
             <TextField 
@@ -41,7 +40,7 @@ export function SignUpPage() {
               value={form.name} 
               onChange={handleInputChange} 
               name="name"
-              style={{margin:'8px 0'}}
+              style={{margin:'10px 0'}}
             />
             <TextField 
               label="E-mail" 
@@ -52,7 +51,7 @@ export function SignUpPage() {
               value={form.email} 
               onChange={handleInputChange}
               name="email"
-              style={{margin:'8px 0'}}
+              style={{margin:'10px 0'}}
             />
             <TextField 
               label="CPF" 
@@ -63,7 +62,7 @@ export function SignUpPage() {
               onChange={handleInputChange}
               name="cpf"
               pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
-              style={{margin:'8px 0'}}
+              style={{margin:'10px 0'}}
             />
             <TextField
               label="Senha"
@@ -74,7 +73,7 @@ export function SignUpPage() {
               value={form.password}
               onChange={handleInputChange}
               name="password"
-              style={{margin:'8px 0'}}
+              style={{margin:'10px 0'}}
             />
             <TextField
               label="Confirmar"
@@ -85,11 +84,11 @@ export function SignUpPage() {
               value={form.password}
               onChange={handleInputChange}
               name="confirm-password"
-              style={{margin:'8px 0'}}
+              style={{margin:'10px 0'}}
             />
             <Button text="Criar" type="submit" />
         </FormContainer>
-      </LoginPageContainer>
-    </div>
+      </SignUpPageContainer>
+    </Wrapper>
   );
 }
