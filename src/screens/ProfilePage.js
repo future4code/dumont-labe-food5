@@ -1,7 +1,9 @@
 import React from "react";
+import { RestaurantCard } from "../components/RestaurantCard/RestaurantCard";
 
 function ProfilePage() {
   return (
+    
     <div>
       Meu perfil
       <hr />

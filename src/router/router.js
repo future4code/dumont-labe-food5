@@ -9,6 +9,7 @@ import FeedPage from "../screens/feedPage/feedPage";
 import ProfileEditUserPage from "../screens/ProfileEditUserPage";
 import ProfilePageEditAdress from "../screens/ProfilePageEditAdress";
 import RestaurantDetailsPage from "../screens/RestaurantDetailsPage/RestaurantDetailsPage";
+import ProfilePage from "../screens/ProfilePage";
 export function Router() {
   return (
     <BrowserRouter>
@@ -30,6 +31,9 @@ export function Router() {
         </Route>
         <Route exact path="/feed">
           <FeedPage />
+        </Route>
+        <Route exact path="/profile">
+          <ProfilePage />
         </Route>
         <Route exact path="/editprofile">
           <ProfileEditUserPage />
