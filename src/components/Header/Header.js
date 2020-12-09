@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
   // Recebe props de titulo
 export function Header(props) {
   const history = useHistory()
+  
   return (
     <HeaderContainer>
       <h1>{props.text}</h1>

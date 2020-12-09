@@ -4,7 +4,7 @@ import { LoginPage } from "../screens/LoginPage/LoginPage";
 import React from "react";
 import { AddAddressPage } from "../screens/AddAddresPage/AddAddressPage";
 import { SignUpPage } from "../screens/SignUpPage/SignUpPage";
-import CartPage from "../screens/CartPage";
+import CartPage from "../screens/CartPage/CartPage";
 import FeedPage from "../screens/feedPage/feedPage";
 import ProfileEditUserPage from "../screens/ProfileEditUserPage";
 import ProfilePageEditAdress from "../screens/ProfilePageEditAdress";
