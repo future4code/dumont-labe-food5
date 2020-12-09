@@ -41,7 +41,7 @@ export function Router() {
         <Route exact path="/editaddress">
           <ProfilePageEditAdress />
         </Route>
-        <Route exact path="/restaurantdetails">
+        <Route exact path="/restaurantdetails/:id">
           <RestaurantDetailsPage />
         </Route>
       </Switch>

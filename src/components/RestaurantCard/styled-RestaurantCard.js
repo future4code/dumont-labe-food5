@@ -8,6 +8,7 @@ export const ContainerRestaurantCard = styled.div`
     border: solid 1px #b8b8b8;
     margin:auto;
     margin-bottom:5vh;
+    cursor:pointer;
     img{
         width:20.5rem;
         height:7.5rem;

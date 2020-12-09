@@ -6,7 +6,7 @@ export function RestaurantCard(props) {
   // Componente do Card do Restaurante
   
   return (
-    <ContainerRestaurantCard>
+    <ContainerRestaurantCard onClick={props.onClick}>
     <img src={props.logoUrl}/>
     <ContainerInfos>
         <h2>{props.name}</h2>
