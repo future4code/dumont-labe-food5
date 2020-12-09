@@ -22,6 +22,7 @@ function FeedPage() {
       <RestaurantCard logoUrl={rest.logoUrl} shipping={rest.shipping} name={rest.name} deliveryTime={rest.deliveryTime} onClick={()=>goToRestaurant(history, rest.id)}/>
     )
   })
+
   return (
     <PageContainer>
       <h4>4Food</h4>

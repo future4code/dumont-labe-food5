@@ -18,6 +18,7 @@ function RestaurantDetailsPage() {
       <ItemCard photoUrl={rest.photoUrl} name={rest.name} description={rest.description} price={rest.price}/>
     )
   })
+
   return (
     <div>
       <Header text="Restaurante"/>
