@@ -9,6 +9,7 @@ import FeedPage from "../screens/feedPage/feedPage";
 import ProfileEditUserPage from "../screens/ProfileEditUserPage";
 import ProfilePageEditAdress from "../screens/ProfilePageEditAdress";
 import RestaurantDetailsPage from "../screens/RestaurantDetailsPage/RestaurantDetailsPage";
+import ProfilePage from "../screens/ProfilePage";
 export function Router() {
   return (
     <BrowserRouter>
@@ -31,13 +32,16 @@ export function Router() {
         <Route exact path="/feed">
           <FeedPage />
         </Route>
+        <Route exact path="/profile">
+          <ProfilePage />
+        </Route>
         <Route exact path="/editprofile">
           <ProfileEditUserPage />
         </Route>
         <Route exact path="/editaddress">
           <ProfilePageEditAdress />
         </Route>
-        <Route exact path="/restaurantdetails">
+        <Route exact path="/restaurantdetails/:id">
           <RestaurantDetailsPage />
         </Route>
       </Switch>

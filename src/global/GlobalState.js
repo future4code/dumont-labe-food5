@@ -7,8 +7,20 @@ import { goToFeedPage } from '../router/Coordinator';
 
 const GlobalState = (props) => {
     const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")   
-    
+    const [password, setPassword] = useState("") 
+      // Estado com todos os restaurantes
+    const [restaurants, setRestaurants] = useState([])
+    // Estado com produtos do restaurante escolhido
+    const [restaurantProducts, setRestaurantProducts] = useState([])
+      // Estado com detalhes do restaurante escolhido
+      const [restaurantDetails, setRestaurantDetails] = useState([])
+
+
+    // Variável com o token do localStorage
+    const token = localStorage.getItem("token")
+    // Variável com autorização para requisições
+    const auth = {headers: {auth: token}}
+
 // Request que faz o login
     const postLogin = (history) => {
 		const body = {
@@ -22,6 +34,7 @@ const GlobalState = (props) => {
             localStorage.setItem("token", resposta.data.token)
             alert("LOGIN FEITO COM SUCESSO")
             // Se a requisição funcionar, o usuário é direcionado até o feed
+            goToFeedPage(history)
 		}).catch((err) => {
 			console.log("Erro Request postLogin",err.message)
         });
@@ -30,11 +43,40 @@ const GlobalState = (props) => {
         
        
         
-	};
+  };
+  
+  
+  // Request de pegar os restaurantes
+
+  const getRestaurants = (history) => {
+    axios.get(`${baseUrl}/restaurants`, auth)
+    .then((resposta)=>{
+      // Requisição seta estado restaurants com todos os restaurantes 
+      setRestaurants(resposta.data.restaurants)
+      console.log("Resposta requisição getRestaurants", resposta.data)
+    }).catch((err)=> {
+      console.log("Erro Request GetRestaurants")
+      
+    })
+  }
+
+  // Resquest de pegar os detalhes do Restaurante
+
+  const getRestaurantDetails = (id) => {
+    axios.get(`${baseUrl}/restaurants/${id}`, auth)
+    .then((resposta)=>{
+      setRestaurantProducts(resposta.data.restaurant.products)
+      console.log("Resposta requisição getRestaurantDetails", resposta.data.restaurant)
+      setRestaurantDetails(resposta.data.restaurant)
+    }).catch((err)=> {
+      console.log("Erro Request GetRestaurantDetails")
+      
+    })
+  }
     
-    const states = {email, password};
+    const states = {email, password, restaurants, restaurantProducts, restaurantDetails};
     const setters = {setEmail, setPassword};
-    const requests = {postLogin};
+    const requests = {postLogin, getRestaurants, getRestaurantDetails};
   
     const data = { states, setters, requests };
     return (
