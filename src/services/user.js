@@ -1,6 +1,6 @@
 import axios from "axios"
 import { baseUrl } from "../constants/baseUrl"
-import { goToFeed } from "../router/Coordinator"
+import { goToFeedPage } from "../router/Coordinator"
 
 export const signup = (body, history) => {
 
@@ -8,7 +8,7 @@ export const signup = (body, history) => {
         .post(`${baseUrl}/signup`, body)
         .then(response => {
             localStorage.setItem("token", response.data.token)
-            goToFeed(history)
+            goToFeedPage(history)
         }).catch(error => {
             console.log(error.message)
         })
