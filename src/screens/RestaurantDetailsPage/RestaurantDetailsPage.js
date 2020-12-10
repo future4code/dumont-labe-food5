@@ -10,22 +10,39 @@ function RestaurantDetailsPage() {
   useProtectPage();
   const pathParams = useParams()
   const history = useHistory()
-  const {states, setters, requests} = useContext(GlobalStateContext)
-
+  const { states, setters, requests } = useContext(GlobalStateContext)
+  
   useEffect(() => {
-    requests.getRestaurantDetails(pathParams.id);
+    requests.getRestaurantDetails(pathParams.id)
   }, []);
 
-  const renderRestaurantDetails = states.restaurantProducts.map((rest) => {
+
+  const addItemToCart = (newItem) => {
+    const index = states.cart.findIndex((i) => i.id === newItem.id);
+    let newCart = [...states.cart];
+    if (index === -1) {
+      newCart.push({ ...newItem, amount: 1 })
+    }
+    else {
+      newCart[index].amount += 1;
+    }
+    setters.setCart(newCart);
+    alert(`${newItem.name} foi adicionado ao seu carrinho!`)
+  }
+
+  const renderRestaurantDetails = states.restaurantProducts.map((item) => {
     return (
-      <ItemCard
-        photoUrl={rest.photoUrl}
-        name={rest.name}
-        description={rest.description}
-        price={rest.price}
+      <ItemCard 
+      key={item.id}
+      photoUrl={item.photoUrl[0]} 
+      name={item.name} 
+      description={item.description} 
+      price={item.price} 
+      amount={item.amount}
+      addItemToCart={() => addItemToCart(item)}
       />
-    );
-  });
+    )
+  })
   return (
     <div>
       <Header text="Restaurante" />

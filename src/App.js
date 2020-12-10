@@ -5,9 +5,9 @@ import { Router } from "./router/router";
 
 function App() {
   return (
-    <GlobalState>
-      <Router />
-    </GlobalState>
+      <GlobalState>
+        <Router />
+      </GlobalState>
   );
 }
 
