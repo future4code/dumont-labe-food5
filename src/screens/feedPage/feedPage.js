@@ -11,9 +11,9 @@ import GlobalStateContext from "../../global/GlobalStateContext";
 import { goToRestaurant } from "../../router/Coordinator";
 import { useHistory } from "react-router-dom";
 import { useProtectPage } from "../../hooks/useProtectPage";
+import { Header } from "../../components/Header/Header";
 
 function FeedPage() {
-
   useProtectPage();
   const history = useHistory();
   const { states, setters, requests } = useContext(GlobalStateContext);
@@ -70,14 +70,15 @@ function FeedPage() {
 
   return (
     <PageContainer>
-      <h4>4Food </h4>
+      <Header text="4Food" />
       <form>
         <InputStyle onChange={onChangeSetFilteredByName} />
       </form>
       <FilterContainer>
+        <Categories onClick={() => onClickSetCategory(0)}>Tudo</Categories>
         {states.restaurants ? getCategories : "<p></p>"}
       </FilterContainer>
-      {states.restaurants ? renderRestaurants : "<p>'</p>"}
+      {states.restaurants ? renderRestaurants : "<p></p>"}
       <BottomBar>
         <img src="https://cdn.zeplin.io/5dd5ab8e5fb2a0060f81698f/assets/E718CCC7-08DF-4BEA-B3D1-8DCB3E8A3BA5.svg" />
         <img src="https://cdn.zeplin.io/5dd5ab8e5fb2a0060f81698f/assets/31E0BDE3-26B3-421A-AEC5-883D098413D6.svg" />
