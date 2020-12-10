@@ -32,11 +32,12 @@ export const AdressTitle = styled.div`
 `
 export const Card = styled.div`
   width: 22.5rem;
-  height: 2.625rem;
+  min-height: 2.625rem;
+  max-height: 60rem;
   margin: 0.5rem 0 2.063rem;
   padding: 0.75rem 2rem;
 `
-export const Frete = styled.div`
+export const Tax = styled.div`
   width: 104px;
   height: 18px;
   font-family: Roboto;

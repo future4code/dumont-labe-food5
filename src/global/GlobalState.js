@@ -24,6 +24,16 @@ const GlobalState = (props) => {
   const token = localStorage.getItem("token");
   // Variável com autorização para requisições
   const auth = { headers: { auth: token } };
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("") 
+      // Estado com todos os restaurantes
+    const [restaurants, setRestaurants] = useState([])
+    // Estado com produtos do restaurante escolhido
+    const [restaurantProducts, setRestaurantProducts] = useState([])
+      // Estado com detalhes do restaurante escolhido
+      const [restaurantDetails, setRestaurantDetails] = useState([])
+    //Estado do carrinho
+      const [cart, setCart] = useState([]);
 
   // Request que faz o login
   const postLogin = (history) => {
