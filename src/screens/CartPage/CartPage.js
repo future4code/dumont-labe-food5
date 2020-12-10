@@ -30,7 +30,7 @@ function CartPage() {
     return (
       <ItemCard
         key={item.id}
-        photoUrl={item.photoUrl[0]}
+        photoUrl={item.photoUrl}
         name={item.name}
         description={item.description}
         price={item.price}
