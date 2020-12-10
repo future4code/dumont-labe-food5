@@ -1,5 +1,5 @@
 import React from "react";
-import { useProtectPage } from "../hooks/useProtectPage";
+import { useProtectPage } from "../../hooks/useProtectPage";
 
 function ProfileEditUserPage() {
   useProtectPage();
