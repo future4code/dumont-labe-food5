@@ -7,12 +7,12 @@ export function Input(props) {
   return (
     <InputContainer>
       <label>{props.label}</label>
-      <input 
-        placeholder={props.placeholder} 
-        type={props.type} 
+      <input
+        placeholder={props.placeholder}
+        type={props.type}
         onChange={props.onChange}
         value={props.value}
-        required 
+        required
       />
     </InputContainer>
   );

@@ -8,8 +8,8 @@ export const useForm = (initialState) => {
   };
 
   const resetForm = () => {
-    setForm(initialState)
-  }
+    setForm(initialState);
+  };
 
   return { form, onChange, resetForm };
-}
+};
