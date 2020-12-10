@@ -1,22 +1,25 @@
 // Função de ir para LoginPage
 
 export const goToLoginPage = (history) => {
-    history.push("/login")
-}
+  history.push("/login");
+};
 
 // Função de voltar para página anterior
 
 export const goBack = (history) => {
-    history.goBack();
-  };
+  history.goBack();
+};
 
 // Função de ir para página de Cadastro
 
 export const goToSignUpPage = (history) => {
-    history.push("/signup")
-}
+  history.push("/signup");
+};
 
 export const goToFeedPage = (history) => {
-    history.push("/feed")
-}
-  
+  history.push("/feed");
+};
+
+export const goToRestaurant = (history, id) => {
+  history.push(`/restaurantdetails/${id}`);
+};

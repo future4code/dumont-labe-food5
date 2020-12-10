@@ -1,35 +1,84 @@
-import React from "react";
-import { PageContainer, InputStyle, FilterContainer, CardImg, CardContainer, CardDetail, BottomBar} from "./styled";
-import { baseUrl } from '../../constants/baseUrl'
-import { useRequestData } from '../../hooks/useRequestData'
-
-
+import React, { useContext, useEffect, useState } from "react";
+import {
+  PageContainer,
+  InputStyle,
+  FilterContainer,
+  BottomBar,
+  Categories,
+} from "./styled";
+import { RestaurantCard } from "../../components/RestaurantCard/RestaurantCard";
+import GlobalStateContext from "../../global/GlobalStateContext";
+import { goToRestaurant } from "../../router/Coordinator";
+import { useHistory } from "react-router-dom";
+import { useProtectPage } from "../../hooks/useProtectPage";
+import { Header } from "../../components/Header/Header";
 
 function FeedPage() {
+  useProtectPage();
+  const history = useHistory();
+  const { states, setters, requests } = useContext(GlobalStateContext);
+  // Estado com as categorias dos restaurantes no feed
 
-  const feed = useRequestData(`${baseUrl}/restaurants`, [])
-  console.log(feed)
+  useEffect(() => {
+    requests.getRestaurants();
+  }, []);
+
+  // Muda Estado de filtro por nome
+  const onChangeSetFilteredByName = (event) => {
+    setters.setFilteredByName(event.target.value);
+    console.log(states.filteredByName);
+  };
+  // Muda Estado de filtro por categoria
+  const onClickSetCategory = (cat) => {
+    setters.setCategory(cat);
+    console.log(states.category);
+  };
+
+  // Funcionalidade de filtro
+  const filteredRestaurants = states.restaurants.filter((rest) => {
+    if (states.category === 0) {
+      return (
+        rest.deliveryTime >= 0 && rest.name.includes(states.filteredByName)
+      );
+    } else {
+      return (
+        rest.category === states.category &&
+        rest.name.includes(states.filteredByName)
+      );
+    }
+  });
+
+  // Display das categorias
+  const getCategories = states.restaurants.map((rest) => {
+    return (
+      <Categories onClick={() => onClickSetCategory(rest.category)}>
+        {rest.category}
+      </Categories>
+    );
+  });
+  const renderRestaurants = filteredRestaurants.map((rest) => {
+    return (
+      <RestaurantCard
+        logoUrl={rest.logoUrl}
+        shipping={rest.shipping}
+        name={rest.name}
+        deliveryTime={rest.deliveryTime}
+        onClick={() => goToRestaurant(history, rest.id)}
+      />
+    );
+  });
 
   return (
     <PageContainer>
-      <h4>4Food</h4>
+      <Header text="4Food" />
       <form>
-        <InputStyle />
+        <InputStyle onChange={onChangeSetFilteredByName} />
       </form>
       <FilterContainer>
-        <p>Burger</p>
-        <p>Asiática</p>
-        <p>Massas</p>
-        <p>Saudáveis</p>
+        <Categories onClick={() => onClickSetCategory(0)}>Tudo</Categories>
+        {states.restaurants ? getCategories : "<p></p>"}
       </FilterContainer>
-      <CardContainer>
-        <CardImg src="https://cdn.zeplin.io/5dd5ab8e5fb2a0060f81698f/assets/C78C3992-5FF3-4F52-8632-E1CA759C9C9F.png" />
-        <p>Vinil Butantã</p>
-        <CardDetail>
-          <p>50 - 60 min</p>
-          <p>Frete R$ 6,00</p>
-        </CardDetail>
-      </CardContainer>
+      {states.restaurants ? renderRestaurants : "<p></p>"}
       <BottomBar>
         <img src="https://cdn.zeplin.io/5dd5ab8e5fb2a0060f81698f/assets/E718CCC7-08DF-4BEA-B3D1-8DCB3E8A3BA5.svg" />
         <img src="https://cdn.zeplin.io/5dd5ab8e5fb2a0060f81698f/assets/31E0BDE3-26B3-421A-AEC5-883D098413D6.svg" />
