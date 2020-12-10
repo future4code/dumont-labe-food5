@@ -21,3 +21,5 @@ function SearchPlaceholder() {
     </div>
   );
 }
+
+export default SearchPlaceholder
