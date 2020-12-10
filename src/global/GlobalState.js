@@ -16,12 +16,11 @@ const GlobalState = (props) => {
   // Estado com detalhes do restaurante escolhido
   const [restaurantDetails, setRestaurantDetails] = useState([]);
   // Estado para armazenar dados do perfil
-    const [profileData, setProfileData] = useState({})
+  const [profileData, setProfileData] = useState({})
   // Estado usado para filtrar por categoria
   const [category, setCategory] = useState(0);
   // Estado usado para filtrar por nome
   const [filteredByName, setFilteredByName] = useState("");
-
   // Variável com o token do localStorage
   const token = localStorage.getItem("token");
   // Variável com autorização para requisições
@@ -84,18 +83,18 @@ const GlobalState = (props) => {
 
   // Request para pegar os dados do perfil
 
-    const getProfileData = () => {
-      axios.get(`${baseUrl}/profile`, auth)
-        .then((response) => {
-          setProfileData(response.data.user)
-        })
-        .catch((err) => {
-          console.log(err.message)
-        })
-    }
+  const getProfileData = () => {
+    axios.get(`${baseUrl}/profile`, auth)
+      .then((response) => {
+        setProfileData(response.data.user)
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
+  }
     
-    const states = {email, password, restaurants, restaurantProducts, restaurantDetails, profileData};
-    const setters = {setEmail, setPassword};
+    const states = {email, password, restaurants, restaurantProducts, restaurantDetails, profileData, category, filteredByName};
+    const setters = {setEmail, setPassword, setCategory, setFilteredByName};
     const requests = {postLogin, getRestaurants, getRestaurantDetails, getProfileData};
   
     const data = { states, setters, requests };
@@ -104,27 +103,6 @@ const GlobalState = (props) => {
         {props.children}
       </GlobalStateContext.Provider>
     );
-
   };
-
-  const states = {
-    email,
-    password,
-    restaurants,
-    restaurantProducts,
-    restaurantDetails,
-    category,
-    filteredByName,
-  };
-  const setters = { setEmail, setPassword, setCategory, setFilteredByName };
-  const requests = { postLogin, getRestaurants, getRestaurantDetails };
-
-  const data = { states, setters, requests };
-  return (
-    <GlobalStateContext.Provider value={data}>
-      {props.children}
-    </GlobalStateContext.Provider>
-  );
-};
 
 export default GlobalState;
