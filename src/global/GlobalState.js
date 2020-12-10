@@ -14,6 +14,8 @@ const GlobalState = (props) => {
     const [restaurantProducts, setRestaurantProducts] = useState([])
       // Estado com detalhes do restaurante escolhido
       const [restaurantDetails, setRestaurantDetails] = useState([])
+    //Estado do carrinho
+      const [cart, setCart] = useState([]);
 
 
     // Variável com o token do localStorage
@@ -74,8 +76,8 @@ const GlobalState = (props) => {
     })
   }
     
-    const states = {email, password, restaurants, restaurantProducts, restaurantDetails};
-    const setters = {setEmail, setPassword};
+    const states = {email, password, restaurants, restaurantProducts, restaurantDetails, cart};
+    const setters = {setEmail, setPassword, setCart};
     const requests = {postLogin, getRestaurants, getRestaurantDetails};
   
     const data = { states, setters, requests };
