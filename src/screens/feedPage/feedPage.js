@@ -10,8 +10,11 @@ import { RestaurantCard } from "../../components/RestaurantCard/RestaurantCard";
 import GlobalStateContext from "../../global/GlobalStateContext";
 import { goToRestaurant } from "../../router/Coordinator";
 import { useHistory } from "react-router-dom";
+import { useProtectPage } from "../../hooks/useProtectPage";
 
 function FeedPage() {
+
+  useProtectPage();
   const history = useHistory();
   const { states, setters, requests } = useContext(GlobalStateContext);
   // Estado com as categorias dos restaurantes no feed
@@ -64,6 +67,7 @@ function FeedPage() {
       />
     );
   });
+
   return (
     <PageContainer>
       <h4>4Food </h4>

@@ -4,26 +4,19 @@ import { Button } from "../../components/Button/Button";
 import { Header } from "../../components/Header/Header";
 import { useHistory } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
-import { signup } from "../../services/user";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import {
-  TextField,
-  InputAdornment,
-  FormControl,
-  InputLabel,
-} from "@material-ui/core";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
-import IconButton from "@material-ui/core/IconButton";
-import {
-  FormContainer,
-  Title,
-  LogoSignUp,
-  Wrapper,
-  SignUpPageContainer,
-} from "./styled-SignUpPage";
+
+import { signup } from "../../services/user"
+import Visibility from "@material-ui/icons/Visibility"
+import VisibilityOff from "@material-ui/icons/VisibilityOff"
+import { TextField, InputAdornment, FormControl, InputLabel } from "@material-ui/core"
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import IconButton from '@material-ui/core/IconButton'
+import { FormContainer, Title, LogoSignUp, Wrapper, SignUpPageContainer } from "./styled-SignUpPage";
+import { useUnprotectedPage } from "../../hooks/useUnprotectedPage";
+
 
 export function SignUpPage() {
+  useUnprotectedPage();
   // Página de SignUp do usuário
 
   const history = useHistory();

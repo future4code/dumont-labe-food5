@@ -1,6 +1,8 @@
 import React from "react";
+import { useProtectPage } from "../hooks/useProtectPage";
 
 function CartPage() {
+  useProtectPage();
   return (
     <div>
       <div>

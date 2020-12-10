@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import { goToFeedPage } from "../router/Coordinator";
 
 const GlobalState = (props) => {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // Estado com todos os restaurantes
@@ -14,6 +15,8 @@ const GlobalState = (props) => {
   const [restaurantProducts, setRestaurantProducts] = useState([]);
   // Estado com detalhes do restaurante escolhido
   const [restaurantDetails, setRestaurantDetails] = useState([]);
+  // Estado para armazenar dados do perfil
+    const [profileData, setProfileData] = useState({})
   // Estado usado para filtrar por categoria
   const [category, setCategory] = useState(0);
   // Estado usado para filtrar por nome
@@ -23,6 +26,7 @@ const GlobalState = (props) => {
   const token = localStorage.getItem("token");
   // Variável com autorização para requisições
   const auth = { headers: { auth: token } };
+
 
   // Request que faz o login
   const postLogin = (history) => {
@@ -45,6 +49,7 @@ const GlobalState = (props) => {
       });
     setEmail("");
     setPassword("");
+
   };
 
   // Request de pegar os restaurantes
@@ -65,19 +70,41 @@ const GlobalState = (props) => {
   // Resquest de pegar os detalhes do Restaurante
 
   const getRestaurantDetails = (id) => {
-    axios
-      .get(`${baseUrl}/restaurants/${id}`, auth)
-      .then((resposta) => {
-        setRestaurantProducts(resposta.data.restaurant.products);
-        console.log(
-          "Resposta requisição getRestaurantDetails",
-          resposta.data.restaurant
-        );
-        setRestaurantDetails(resposta.data.restaurant);
-      })
-      .catch((err) => {
-        console.log("Erro Request GetRestaurantDetails");
-      });
+
+    axios.get(`${baseUrl}/restaurants/${id}`, auth)
+    .then((resposta)=>{
+      setRestaurantProducts(resposta.data.restaurant.products)
+      console.log("Resposta requisição getRestaurantDetails", resposta.data.restaurant)
+      setRestaurantDetails(resposta.data.restaurant)
+    }).catch((err)=> {
+      console.log("Erro Request GetRestaurantDetails")
+      
+    })
+  }
+
+  // Request para pegar os dados do perfil
+
+    const getProfileData = () => {
+      axios.get(`${baseUrl}/profile`, auth)
+        .then((response) => {
+          setProfileData(response.data.user)
+        })
+        .catch((err) => {
+          console.log(err.message)
+        })
+    }
+    
+    const states = {email, password, restaurants, restaurantProducts, restaurantDetails, profileData};
+    const setters = {setEmail, setPassword};
+    const requests = {postLogin, getRestaurants, getRestaurantDetails, getProfileData};
+  
+    const data = { states, setters, requests };
+    return (
+      <GlobalStateContext.Provider value={data}>
+        {props.children}
+      </GlobalStateContext.Provider>
+    );
+
   };
 
   const states = {

@@ -5,11 +5,15 @@ import { Button } from "../../components/Button/Button";
 import { LoginPageContainer } from "../LoginPage/styled-LoginPage";
 import { Header } from "../../components/Header/Header";
 import GlobalStateContext from "../../global/GlobalStateContext";
+import { useProtectPage } from "../../hooks/useProtectPage";
 
 // Página de Adicionar Endereço no Cadastro
 
 export function AddAddressPage() {
-  const { requests } = useContext(GlobalStateContext);
+
+  useProtectPage();
+  const {requests} = useContext(GlobalStateContext)
+
   return (
     <div>
       <Header />

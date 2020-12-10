@@ -7,11 +7,14 @@ import { Header } from "../../components/Header/Header";
 import { goToSignUpPage } from "../../router/Coordinator";
 import { useHistory } from "react-router-dom";
 import GlobalStateContext from "../../global/GlobalStateContext";
+import { useUnprotectedPage } from "../../hooks/useUnprotectedPage";
 
 // Página de Login do Usuário
 export function LoginPage() {
-  const history = useHistory();
-  const { states, setters, requests } = useContext(GlobalStateContext);
+  useUnprotectedPage();
+  const history = useHistory()
+  const {states, setters, requests} = useContext(GlobalStateContext)
+
   const onChangeSetEmail = (event) => {
     setters.setEmail(event.target.value);
   };

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useProtectPage } from "../hooks/useProtectPage";
 
 const InputStyle = styled.input`
   width: 20.5rem;
@@ -10,6 +11,7 @@ const InputStyle = styled.input`
 `;
 
 function SearchPlaceholder() {
+  useProtectPage();
   return (
     <div>
       <form>
@@ -19,3 +21,5 @@ function SearchPlaceholder() {
     </div>
   );
 }
+
+export default SearchPlaceholder
