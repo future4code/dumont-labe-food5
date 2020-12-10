@@ -13,3 +13,16 @@ export const signup = (body, history) => {
       console.log(error.message);
     });
 };
+
+export const editProfile = (body) => {
+  axios
+    .put(`${baseUrl}/profile`, body,)
+    .then(response => {
+      console.log(response.data)
+      window.alert("Cadastro atualizado!")
+    })
+    .catch(error => {
+      console.log(error.message)
+      window.alert("Opss.. Algo deu errado!")
+    })
+}
