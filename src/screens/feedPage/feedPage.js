@@ -9,7 +9,6 @@ import {
 import { RestaurantCard } from "../../components/RestaurantCard/RestaurantCard";
 import GlobalStateContext from "../../global/GlobalStateContext";
 import { goToRestaurant } from "../../router/Coordinator";
-import { useHistory } from "react-router-dom";
 import { useProtectPage } from "../../hooks/useProtectPage";
 import { Header } from "../../components/Header/Header";
 import { useHistory, Link } from "react-router-dom";
