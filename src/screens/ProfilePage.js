@@ -2,6 +2,9 @@ import React, { useEffect, useContext } from "react";
 import { RestaurantCard } from "../components/RestaurantCard/RestaurantCard";
 import { useProtectPage } from "../hooks/useProtectPage";
 import GlobalStateContext from "../global/GlobalStateContext";
+import { useRequestData } from "../hooks/useRequestData";
+import { baseUrl } from "../constants/baseUrl";
+import { OrderHistoryCard } from "../components/OrderHistoryCard/OrderHistoryCard";
 
 function ProfilePage() {
   useProtectPage();
@@ -10,6 +13,15 @@ function ProfilePage() {
     requests.getProfileData()
 }, []);
 
+const ordersHistory = useRequestData(`${baseUrl}/orders/history`, [])
+
+console.log(ordersHistory)
+
+const renderOrdersHistory = ordersHistory.map((order)=>{
+  return(
+    <OrderHistoryCard restaurantName={order.restaurantName} date={order.createdAt} totalPrice={order.totalPrice} />
+  )
+})
 
   return (
     
@@ -28,7 +40,7 @@ function ProfilePage() {
       <div>
         Histórico de pedidos
         <hr />
-        <div>Você não realizou nenhum pedido</div>
+        <div>{renderOrdersHistory}</div>
       </div>
     </div>
   );

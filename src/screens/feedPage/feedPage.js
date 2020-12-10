@@ -21,7 +21,7 @@ function FeedPage() {
   // console.log(feed) 
   const renderRestaurants = states.restaurants.map((rest)=>{
     return(
-      <RestaurantCard logoUrl={rest.logoUrl} shipping={rest.shipping} name={rest.name} deliveryTime={rest.deliveryTime} onClick={()=>goToRestaurant(history, rest.id)}/>
+      <RestaurantCard logoUrl={rest.logoUrl} shipping={rest.shipping} name={rest.name} deliveryTime={rest.deliveryTime} onClick={()=>goToRestaurant(history, rest.id)} />
     )
   })
   return (
