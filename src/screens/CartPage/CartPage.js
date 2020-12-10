@@ -7,10 +7,12 @@ function CartPage() {
   const { states, setters } = useContext(GlobalStateContext);
   const [priceToPay, setPriceToPay] = useState(0);
 
+  const tax = states.restaurantDetails.shipping;
+
   useEffect(() => {
     let currentTotal = 0;
     states.cart.forEach((item) => {
-      currentTotal += item.price * item.amount;
+      currentTotal += item.price * item.amount + tax;
     });
     setPriceToPay(currentTotal);
   }, [states.cart]);
@@ -36,9 +38,11 @@ function CartPage() {
         price={item.price}
         amount={item.amount}
         removeItem={() => removeItemFromCart(item)}
+        textButton="Remover"
       />
     );
   });
+  
   return (
     <Page>
       <AdressContainer>
@@ -46,7 +50,7 @@ function CartPage() {
         <Adress>Rua Alessandra Viera, 42</Adress>
       </AdressContainer>
       <Card>{productsList.length > 0 ? productsList : <p>Carrinho Vazio</p>}</Card>
-      <Tax>Frete R$ 0,00</Tax>
+      <Tax>Frete R$ {states.restaurantDetails.shipping ? states.restaurantDetails.shipping : "0. 00"} </Tax>
       <SubtotalContainer>
         <SubtotalTitle>SUBTOTAL</SubtotalTitle>
         <Total>  R${priceToPay.toFixed(2)}</Total>

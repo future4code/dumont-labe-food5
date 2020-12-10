@@ -1,9 +1,7 @@
 import styled from 'styled-components'
 
 export const Page = styled.div`
-  width: 360px;
-  height: 640px;
-  padding-left: 35rem;
+
 `
 export const AdressContainer = styled.div`
   border: 1px solid black;

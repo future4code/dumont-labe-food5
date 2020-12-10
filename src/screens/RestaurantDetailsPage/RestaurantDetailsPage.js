@@ -40,6 +40,7 @@ function RestaurantDetailsPage() {
       price={item.price} 
       amount={item.amount}
       addItemToCart={() => addItemToCart(item)}
+      textButton="Adicionar"
       />
     )
   })
