@@ -1,7 +1,9 @@
 import React from "react";
 import { RestaurantCard } from "../components/RestaurantCard/RestaurantCard";
+import { useProtectPage } from "../hooks/useProtectPage";
 
 function ProfilePage() {
+  useProtectPage();
   return (
     
     <div>

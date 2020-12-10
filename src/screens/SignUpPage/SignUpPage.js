@@ -11,8 +11,10 @@ import { TextField, InputAdornment, FormControl, InputLabel } from "@material-ui
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import IconButton from '@material-ui/core/IconButton'
 import { FormContainer, Title, LogoSignUp, Wrapper, SignUpPageContainer } from "./styled-SignUpPage";
+import { useUnprotectedPage } from "../../hooks/useUnprotectedPage";
 
 export function SignUpPage() {
+  useUnprotectedPage();
   // Página de SignUp do usuário
 
   const history = useHistory()

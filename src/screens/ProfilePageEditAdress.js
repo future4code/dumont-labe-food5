@@ -1,6 +1,8 @@
 import React from "react";
+import { useProtectPage } from "../hooks/useProtectPage";
 
 function ProfilePageEditAdress() {
+  useProtectPage();
   return (
     <div>
       Endereço
