@@ -63,7 +63,7 @@ export const ItemCardContainer = styled.div`
         text-align: center;
         color:black;
         
-    `
+    `;
 export const InfoContainer = styled.div`
-    margin-left:3vw;
-`
+  margin-left: 3vw;
+`;
