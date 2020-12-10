@@ -24,7 +24,6 @@ const renderOrdersHistory = ordersHistory.map((order)=>{
 })
 
   return (
-    
     <div>
       Meu perfil
       <hr />

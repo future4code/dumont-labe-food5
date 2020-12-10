@@ -18,10 +18,11 @@ export const InputStyle = styled.input`
 
 export const FilterContainer = styled.div`
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   width: 22.5rem;
   height: 2.625rem;
-  margin: 0.5rem 0 0;
+  margin: 0.5rem 0 10vh;
   padding: 0.75rem 0 0.75rem 1rem;
 `;
 
@@ -56,4 +57,21 @@ export const BottomBar = styled.div`
     0 -2px 1px -1px rgba(0, 0, 0, 0.12), 0 -1px 1px 0 rgba(0, 0, 0, 0.14);
   background-color: #ffffff;
   position: sticky;
+`;
+export const Categories = styled.p`
+  width: 5.438rem;
+  height: 1.125rem;
+  margin: 0 0.5rem 0 0;
+  font-family: Roboto;
+  font-size: 1rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.39px;
+  text-align: center;
+  color: black;
+  :hover {
+    color: #e8222e;
+  }
 `;

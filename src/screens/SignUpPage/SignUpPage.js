@@ -2,8 +2,9 @@ import logoIFuture from "../../assets/iFuture-red-logo.svg";
 import React, { useState } from "react";
 import { Button } from "../../components/Button/Button";
 import { Header } from "../../components/Header/Header";
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
+
 import { signup } from "../../services/user"
 import Visibility from "@material-ui/icons/Visibility"
 import VisibilityOff from "@material-ui/icons/VisibilityOff"
@@ -13,44 +14,49 @@ import IconButton from '@material-ui/core/IconButton'
 import { FormContainer, Title, LogoSignUp, Wrapper, SignUpPageContainer } from "./styled-SignUpPage";
 import { useUnprotectedPage } from "../../hooks/useUnprotectedPage";
 
+
 export function SignUpPage() {
   useUnprotectedPage();
   // Página de SignUp do usuário
 
-  const history = useHistory()
-  const { form, onChange } = useForm({ name: "", email: "", cpf: "", password: "", confirmPassword: ""})
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setConfirmShowPassword] = useState(false)
-
+  const history = useHistory();
+  const { form, onChange } = useForm({
+    name: "",
+    email: "",
+    cpf: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setConfirmShowPassword] = useState(false);
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target
-    onChange(name, value)
-  }
+    const { name, value } = event.target;
+    onChange(name, value);
+  };
 
   const handleSubmission = (event) => {
-    signup(form, history)
-  }
+    signup(form, history);
+  };
 
   const handleShowPassword = () => {
-    setShowPassword(!showPassword)
-  }
+    setShowPassword(!showPassword);
+  };
 
   const handleConfirmShowPassword = () => {
-    setConfirmShowPassword(!showConfirmPassword)
-  }
+    setConfirmShowPassword(!showConfirmPassword);
+  };
 
   const validatePassword = (event) => {
-    const password1 = form.password
-    const password2 = form.confirmPassword
-    event.preventDefault()
+    const password1 = form.password;
+    const password2 = form.confirmPassword;
+    event.preventDefault();
     if (password1 === password2) {
-      handleSubmission()
+      handleSubmission();
     } else {
-      alert("As senhas não conferem")
+      alert("As senhas não conferem");
     }
-  }
-
+  };
 
   return (
     <Wrapper>
@@ -58,7 +64,7 @@ export function SignUpPage() {
       <SignUpPageContainer>
         <LogoSignUp src={logoIFuture} alt="Logo 4Food" />
         <Title>Cadastrar</Title>
-        <FormContainer onSubmit={validatePassword} >
+        <FormContainer onSubmit={validatePassword}>
           <TextField
             label="Nome"
             variant="outlined"
@@ -68,7 +74,7 @@ export function SignUpPage() {
             value={form.name}
             onChange={handleInputChange}
             name="name"
-            style={{ margin: '10px 0' }}
+            style={{ margin: "10px 0" }}
           />
           <TextField
             label="E-mail"
@@ -79,7 +85,7 @@ export function SignUpPage() {
             value={form.email}
             onChange={handleInputChange}
             name="email"
-            style={{ margin: '10px 0' }}
+            style={{ margin: "10px 0" }}
           />
           <TextField
             label="CPF"
@@ -90,15 +96,17 @@ export function SignUpPage() {
             onChange={handleInputChange}
             name="cpf"
             pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
-            style={{ margin: '10px 0' }}
+            style={{ margin: "10px 0" }}
           />
-          <FormControl style={{ margin: '10px 0' }}>
-            <InputLabel htmlFor="outlined-adornment-password" margin="dense">Senha</InputLabel>
+          <FormControl style={{ margin: "10px 0" }}>
+            <InputLabel htmlFor="outlined-adornment-password" margin="dense">
+              Senha
+            </InputLabel>
             <OutlinedInput
               id="outlined-adornment-password"
               label="Senha"
               required
-              type={showPassword ? 'text' : 'password'}
+              type={showPassword ? "text" : "password"}
               name="password"
               placeholder="Mínimo 6 caracteres"
               value={form.password}
@@ -116,13 +124,15 @@ export function SignUpPage() {
               }
             />
           </FormControl>
-          <FormControl style={{ margin: '10px 0' }}>
-            <InputLabel htmlFor="outlined-adornment-confirm-password">Confirmar</InputLabel>
+          <FormControl style={{ margin: "10px 0" }}>
+            <InputLabel htmlFor="outlined-adornment-confirm-password">
+              Confirmar
+            </InputLabel>
             <OutlinedInput
               id="outlined-adornment-confirm-password"
               required
               label="Confirmar"
-              type={showConfirmPassword ? 'text' : 'password'}
+              type={showConfirmPassword ? "text" : "password"}
               name="confirmPassword"
               placeholder="Mínimo 6 caracteres"
               value={form.confirmPassword}

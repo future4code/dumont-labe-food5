@@ -10,8 +10,10 @@ import { useProtectPage } from "../../hooks/useProtectPage";
 // Página de Adicionar Endereço no Cadastro
 
 export function AddAddressPage() {
+
   useProtectPage();
   const {requests} = useContext(GlobalStateContext)
+
   return (
     <div>
       <Header />
@@ -23,7 +25,7 @@ export function AddAddressPage() {
         <Input label="Bairro" placeholder="Bairro" type="text" />
         <Input label="Cidade" placeholder="Cidade" type="text" />
         <Input label="Estado" placeholder="Estado" type="text" />
-        <Button text="Criar"/>
+        <Button text="Criar" />
       </LoginPageContainer>
     </div>
   );

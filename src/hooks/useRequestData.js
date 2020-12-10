@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios'; 
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-export function useRequestData(url, initialState){
-    const [data, setData] = useState(initialState);
+export function useRequestData(url, initialState) {
+  const [data, setData] = useState(initialState);
 
     useEffect(() => {
         const token = localStorage.getItem("token")
@@ -20,3 +20,4 @@ export function useRequestData(url, initialState){
     }, [url]);
     return data;
 }
+
