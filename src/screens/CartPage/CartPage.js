@@ -65,7 +65,7 @@ function CartPage() {
       </SubtotalContainer>
       <PayTitle>Forma de pagamento</PayTitle>
       <hr />
-      <PayContainer>
+      <PayContainer onChange={onChangeValue}>
         <Cash>
           <input type="radio" name="paymentmethod" id="money" value="Dinheiro" />
           <label for="money"> Dinheiro </label>
