@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 import { Input } from "../../components/Input/Input";
 import { LoginPageContainer, Logo } from "./styled-LoginPage";
 import { Button } from "../../components/Button/Button";
-import { Header } from "../../components/Header/Header";
 import { goToSignUpPage } from "../../router/Coordinator";
 import { useHistory } from "react-router-dom";
 import GlobalStateContext from "../../global/GlobalStateContext";

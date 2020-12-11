@@ -4,7 +4,7 @@ import { Header } from "../../components/Header/Header";
 import { ItemCard } from "../../components/ItemCard/ItemCard";
 import GlobalStateContext from "../../global/GlobalStateContext";
 import { useProtectPage } from "../../hooks/useProtectPage";
-import { PageContainer, CardImg, CardContainer, CardDetail, RestaurantDetailsContainer} from './styled'
+import { RestaurantDetailsContainer} from './styled'
 
 function RestaurantDetailsPage() {
   useProtectPage();
@@ -48,7 +48,7 @@ function RestaurantDetailsPage() {
     <div>
       <Header text="Restaurante" />
       <RestaurantDetailsContainer>
-        <img src={states.restaurantDetails.logoUrl} />
+        <img src={states.restaurantDetails.logoUrl} alt="logo restaurante" />
         <h1>{states.restaurantDetails.name}</h1>
         <p>{states.restaurantDetails.category}</p>
         <div>

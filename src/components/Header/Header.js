@@ -22,7 +22,7 @@ export function Header(props) {
   return (
     <HeaderContainer>
       <SmallContainer>
-        <img src={back} onClick={() => goBack(history)} />
+        <img src={back} alt="voltar" onClick={() => goBack(history)} />
       </SmallContainer>
       <SmallContainer>
         <Route exact path={["/login", "signup"]}>
@@ -43,7 +43,7 @@ export function Header(props) {
         <Route exact path={"/editprofile"}>
           <TitleContainer>Editar</TitleContainer>
         </Route>
-        <Route exact path={"/editaddress", "/addaddress"}>
+        <Route exact path={"/editaddress"}>
           <TitleContainer>Endereço</TitleContainer>
         </Route>
       </SmallContainer>

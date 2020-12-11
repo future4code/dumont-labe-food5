@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import GlobalStateContext from "./GlobalStateContext";
 import { baseUrl } from "../constants/baseUrl";
-import { useHistory } from "react-router-dom";
-import { goToFeedPage, goToLoginPage } from "../router/Coordinator";
+import { goToLoginPage } from "../router/Coordinator";
 
 const GlobalState = (props) => {
   const [email, setEmail] = useState("");
