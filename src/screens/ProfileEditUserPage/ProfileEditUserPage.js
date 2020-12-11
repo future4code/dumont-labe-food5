@@ -4,7 +4,7 @@ import { useForm } from "../../hooks/useForm"
 import { editProfile } from "../../services/user"
 import { Button } from "../../components/Button/Button";
 import { Header } from "../../components/Header/Header";
-import { FormContainer, Wrapper, editProfileContainer } from "./styled";
+import { FormContainer, Wrapper, EditProfileContainer } from "./styled";
 import { TextField } from '@material-ui/core';
 import { useRequestData } from "../../hooks/useRequestData";
 import { baseUrl } from "../../constants/baseUrl";
@@ -28,7 +28,7 @@ const ProfileEditUserPage = () => {
     return (
       <Wrapper>
         < Header />
-        <editProfileContainer>
+        <EditProfileContainer>
           <FormContainer onSubmit={handleSubmission}>
             <TextField
               required
@@ -65,7 +65,7 @@ const ProfileEditUserPage = () => {
             />
             <Button text="Salvar" type="submit" />
           </FormContainer>
-        </editProfileContainer>
+        </EditProfileContainer>
       </Wrapper>
     );
 }

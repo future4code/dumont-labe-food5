@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 
-export const editProfileContainer = styled.div`
+export const EditProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
