@@ -6,7 +6,7 @@ import { AddAddressPage } from "../screens/AddAddresPage/AddAddressPage";
 import { SignUpPage } from "../screens/SignUpPage/SignUpPage";
 import CartPage from "../screens/CartPage/CartPage";
 import FeedPage from "../screens/feedPage/feedPage";
-import ProfileEditUserPage from "../screens/ProfileEditUserPage";
+import ProfileEditUserPage from "../screens/ProfileEditUserPage/ProfileEditUserPage";
 import ProfilePageEditAdress from "../screens/ProfilePageEditAdress";
 import RestaurantDetailsPage from "../screens/RestaurantDetailsPage/RestaurantDetailsPage";
 import ProfilePage from "../screens/ProfilePage";

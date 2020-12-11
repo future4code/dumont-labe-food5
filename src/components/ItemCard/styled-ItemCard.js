@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+
+export const Page = styled.div `
+    display: flex;
+    flex-direction: row;
+`
 export const ItemCardContainer = styled.div`
     display:flex;
     width: 20.5rem;

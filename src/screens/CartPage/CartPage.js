@@ -1,15 +1,19 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Page, AdressContainer, AdressTitle, Adress, Card, SubtotalTitle, SubtotalContainer, Tax, Total, Button, PayContainer, Pay, Credit, PayTitle } from './styles'
+import { Page, AdressContainer, AdressTitle, Adress, Card, SubtotalTitle, SubtotalContainer, Tax, Total, Button, PayContainer, Cash, Credit, PayTitle } from './styles'
 import { ItemCard } from "../../components/ItemCard/ItemCard";
 import GlobalStateContext from "../../global/GlobalStateContext";
 import { Header } from '../../components/Header/Header'
 
 function CartPage() {
   const { states, setters } = useContext(GlobalStateContext);
-  const [priceToPay, setPriceToPay] = useState(0);
+  const [ priceToPay, setPriceToPay ] = useState(0);
+  const [ pay, setPay ] = useState(false);
 
   const tax = states.restaurantDetails.shipping;
-
+  
+  const onChangeValue = (event) => {
+    setPay(event.target.value);
+  }
   useEffect(() => {
     let currentTotal = 0;
     states.cart.forEach((item) => {
@@ -69,10 +73,13 @@ function CartPage() {
         <Credit>
           <input type="radio" name="paymentmethod" id="creditcard" value="Cartão de Credito" />
           <label for="creditcard"> Cartão de crédito </label>
+
         </Credit>
-      </PayContainer>
-      <Button>Confirmar</Button>
-    </Page>
+        </PayContainer>
+          <Button>Confirmar</Button>
+      </Page>
+    </div>
+
   );
 }
 

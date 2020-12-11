@@ -4,7 +4,6 @@ import { Button } from "../../components/Button/Button";
 import { Header } from "../../components/Header/Header";
 import { useHistory } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
-
 import { signup } from "../../services/user"
 import Visibility from "@material-ui/icons/Visibility"
 import VisibilityOff from "@material-ui/icons/VisibilityOff"

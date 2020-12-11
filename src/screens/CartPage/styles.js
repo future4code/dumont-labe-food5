@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 
 export const Page = styled.div`
+ padding-left: 30px;
 
 `
 export const AdressContainer = styled.div`
-  border: 1px solid black;
-  width: 22.5rem;
+  border: solid 1px #b8b8b8;
+  width: 21.8rem;
   height: 4.75rem;
   margin: 0.063rem 0 0.5rem;
   padding: 1rem;
@@ -30,7 +31,7 @@ export const AdressTitle = styled.div`
 `
 export const Card = styled.div`
   width: 22.5rem;
-  min-height: 2.625rem;
+  min-height: 10rem;
   max-height: 60rem;
   margin: 0.5rem 0 2.063rem;
   padding: 0.75rem 2rem;
@@ -70,6 +71,7 @@ export const SubtotalContainer = styled.div`
 export const PayContainer = styled.form`
   display: flex;
   flex-direction: column;
+  padding-top: 10px;
   gap: 5px;
 `
 export const PayTitle = styled.div`
@@ -78,8 +80,10 @@ export const PayTitle = styled.div`
   font-family: Roboto;
   font-size: 16px;
   letter-spacing: -0.4px;
+  border-bottom: solid 1px #b8b8b8;
+  padding-bottom: 7px;
 `
-export const Pay = styled.label`
+export const Cash = styled.label`
   width: 296px;
   height: 18px;
   font-family: Roboto;
