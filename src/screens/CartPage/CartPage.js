@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { Page, AdressContainer, AdressTitle, Adress, Card, SubtotalTitle, SubtotalContainer, Tax, Total, Button, PayContainer, Pay, Credit, PayTitle } from './styles'
 import { ItemCard } from "../../components/ItemCard/ItemCard";
 import GlobalStateContext from "../../global/GlobalStateContext";
+import { Header } from '../../components/Header/Header'
 
 function CartPage() {
   const { states, setters } = useContext(GlobalStateContext);
@@ -42,9 +43,12 @@ function CartPage() {
       />
     );
   });
+
+  console.log(states.cart)
   
   return (
     <Page>
+      <Header />
       <AdressContainer>
         <AdressTitle>Endereço de entrega</AdressTitle>
         <Adress>Rua Alessandra Viera, 42</Adress>
@@ -59,12 +63,12 @@ function CartPage() {
       <hr />
       <PayContainer>
         <Pay>
-          <input type="radio" />
-          Dinheiro
+          <input type="radio" name="paymentmethod" id="money" value="Dinheiro" />
+          <label for="money"> Dinheiro </label>
         </Pay>
         <Credit>
-          <input type="radio" />
-          Cartão de crédito
+          <input type="radio" name="paymentmethod" id="creditcard" value="Cartão de Credito" />
+          <label for="creditcard"> Cartão de crédito </label>
         </Credit>
       </PayContainer>
       <Button>Confirmar</Button>

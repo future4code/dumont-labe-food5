@@ -5,6 +5,7 @@ import GlobalStateContext from "../global/GlobalStateContext";
 import { useRequestData } from "../hooks/useRequestData";
 import { baseUrl } from "../constants/baseUrl";
 import { OrderHistoryCard } from "../components/OrderHistoryCard/OrderHistoryCard";
+import { Header } from '../components/Header/Header'
 
 function ProfilePage() {
   useProtectPage();
@@ -25,6 +26,7 @@ const renderOrdersHistory = ordersHistory.map((order)=>{
 
   return (
     <div>
+      <Header />
       Meu perfil
       <hr />
       <div>
