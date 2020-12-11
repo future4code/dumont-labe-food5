@@ -66,10 +66,10 @@ function CartPage() {
       <PayTitle>Forma de pagamento</PayTitle>
       <hr />
       <PayContainer>
-        <Pay>
+        <Cash>
           <input type="radio" name="paymentmethod" id="money" value="Dinheiro" />
           <label for="money"> Dinheiro </label>
-        </Pay>
+        </Cash>
         <Credit>
           <input type="radio" name="paymentmethod" id="creditcard" value="Cartão de Credito" />
           <label for="creditcard"> Cartão de crédito </label>
@@ -78,7 +78,7 @@ function CartPage() {
         </PayContainer>
           <Button>Confirmar</Button>
       </Page>
-    </div>
+
 
   );
 }
