@@ -76,7 +76,7 @@ function FeedPage() {
     <PageContainer>
       <Header text="4Food" />
       <form>
-        <InputStyle onChange={onChangeSetFilteredByName} />
+        <InputStyle onChange={onChangeSetFilteredByName} placeholder="Restaurante" />
       </form>
       <FilterContainer>
         <Categories onClick={() => onClickSetCategory(0)}>Tudo</Categories>
