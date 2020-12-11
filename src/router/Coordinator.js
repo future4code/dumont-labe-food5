@@ -24,6 +24,11 @@ export const goToRestaurant = (history, id) => {
   history.push(`/restaurantdetails/${id}`);
 };
 
+
+export const goToAddAdressPage = (history) => {
+  history.push("/addaddress");
+};
+
 export const goToProfilePage = (history) => {
   history.push("/profile");
 };
