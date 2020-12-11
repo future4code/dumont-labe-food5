@@ -20,7 +20,7 @@ export function HomePage() {
   };
   return (
     <HomePageContainer>
-      <img src={logoIFuture} />
+      <img src={logoIFuture} alt="Logo IFuture"/>
     </HomePageContainer>
   );
 }

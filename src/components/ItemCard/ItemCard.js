@@ -1,6 +1,5 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { InfoContainer, ItemCardContainer, Page } from "./styled-ItemCard";
-import GlobalStateContext from "../../global/GlobalStateContext";
 
 export function ItemCard(props) {
     // Componente do Card de Item
@@ -9,7 +8,7 @@ export function ItemCard(props) {
         <Page>
             <div>{props.amount} </div>
             <ItemCardContainer>
-                <img src={props.photoUrl} />
+                <img src={props.photoUrl} alt={props.name} />
                 <InfoContainer>
                     <h2>{props.name}</h2>
                     <p>{props.description}</p>

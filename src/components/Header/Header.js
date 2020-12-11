@@ -1,8 +1,12 @@
 import back from "../../assets/back.svg";
-import { HeaderContainer } from "./styled-Header";
+import {
+  HeaderContainer,
+  SmallContainer,
+  TitleContainer,
+} from "./styled-Header";
 import React from "react";
 import { goBack, goToLoginPage } from "../../router/Coordinator";
-import { useHistory } from "react-router-dom";
+import { useHistory, Route } from "react-router-dom";
 
 // Header usado na aplicação toda
 // Recebe props de titulo
@@ -17,10 +21,35 @@ export function Header(props) {
 
   return (
     <HeaderContainer>
-      <img src={back} onClick={() => goBack(history)} />
-      <h1>{props.text}</h1>
-      {/* Quando icone back é clicado ele aciona a função goBack, que volta para página anterior */}
+      <SmallContainer>
+        <img src={back} alt="voltar" onClick={() => goBack(history)} />
+      </SmallContainer>
+      <SmallContainer>
+        <Route exact path={["/login", "signup"]}>
+          <TitleContainer></TitleContainer>
+        </Route>
+        <Route exact path={"/feed"}>
+          <TitleContainer>IFuture</TitleContainer>
+        </Route>
+        <Route exact path={"/restaurantdetails/:id"}>
+          <TitleContainer>Restaurante</TitleContainer>
+        </Route>
+        <Route exact path={"/cart"}>
+          <TitleContainer>Carrinho</TitleContainer>
+        </Route>
+        <Route exact path={"/profile"}>
+          <TitleContainer>Meu Perfil</TitleContainer>
+        </Route>
+        <Route exact path={"/editprofile"}>
+          <TitleContainer>Editar</TitleContainer>
+        </Route>
+        <Route exact path={"/editaddress"}>
+          <TitleContainer>Endereço</TitleContainer>
+        </Route>
+      </SmallContainer>
+      <SmallContainer>
       <p onClick={onClickRemoveToken}>Logout</p>
+      </SmallContainer>
     </HeaderContainer>
   );
 }

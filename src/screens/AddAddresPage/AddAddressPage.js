@@ -1,4 +1,4 @@
-import logoIFuture from "../../assets/iFuture-red-logo.svg";
+
 import React, { useContext } from "react";
 import { Input } from "../../components/Input/Input";
 import { Button } from "../../components/Button/Button";
@@ -11,6 +11,7 @@ import { useHistory } from "react-router-dom";
 // Página de Adicionar Endereço no Cadastro
 
 export function AddAddressPage() {
+  useProtectPage();
   const { states, setters, requests } = useContext(GlobalStateContext);
   const history = useHistory();
   const onChangeSetStreet = (event) => {

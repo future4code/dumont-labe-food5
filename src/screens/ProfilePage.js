@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from "react";
-import { RestaurantCard } from "../components/RestaurantCard/RestaurantCard";
 import { useProtectPage } from "../hooks/useProtectPage";
 import GlobalStateContext from "../global/GlobalStateContext";
 import { useRequestData } from "../hooks/useRequestData";

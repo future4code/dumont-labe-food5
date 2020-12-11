@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   PageContainer,
   InputStyle,
@@ -8,11 +8,7 @@ import {
 } from "./styled";
 import { RestaurantCard } from "../../components/RestaurantCard/RestaurantCard";
 import GlobalStateContext from "../../global/GlobalStateContext";
-
-
-
-import { goToRestaurant, goToProfilePage, goToFeedPage } from "../../router/Coordinator";
-
+import { goToRestaurant, goToProfilePage } from "../../router/Coordinator";
 import { useProtectPage } from "../../hooks/useProtectPage";
 import { Header } from "../../components/Header/Header";
 import { useHistory, Link } from "react-router-dom";
@@ -76,7 +72,7 @@ function FeedPage() {
     <PageContainer>
       <Header text="4Food" />
       <form>
-        <InputStyle onChange={onChangeSetFilteredByName} />
+        <InputStyle onChange={onChangeSetFilteredByName} placeholder="Restaurante" />
       </form>
       <FilterContainer>
         <Categories onClick={() => onClickSetCategory(0)}>Tudo</Categories>
@@ -84,11 +80,11 @@ function FeedPage() {
       </FilterContainer>
       {states.restaurants ? renderRestaurants : "<p></p>"}
       <BottomBar>
-        <img src="https://cdn.zeplin.io/5dd5ab8e5fb2a0060f81698f/assets/E718CCC7-08DF-4BEA-B3D1-8DCB3E8A3BA5.svg" />
+        <img src="https://cdn.zeplin.io/5dd5ab8e5fb2a0060f81698f/assets/E718CCC7-08DF-4BEA-B3D1-8DCB3E8A3BA5.svg" alt="Home"/>
         <Link to="/cart">
-          <img src="https://cdn.zeplin.io/5dd5ab8e5fb2a0060f81698f/assets/31E0BDE3-26B3-421A-AEC5-883D098413D6.svg" />
+          <img src="https://cdn.zeplin.io/5dd5ab8e5fb2a0060f81698f/assets/31E0BDE3-26B3-421A-AEC5-883D098413D6.svg" alt="carrinho"/>
         </Link>
-        <img src="https://cdn.zeplin.io/5dd5ab8e5fb2a0060f81698f/assets/3725C74F-82A8-4E32-9948-8CBFC09C877F.svg" onClick={() => goToProfilePage(history)} />
+        <img src="https://cdn.zeplin.io/5dd5ab8e5fb2a0060f81698f/assets/3725C74F-82A8-4E32-9948-8CBFC09C877F.svg" alt="perfil" onClick={() => goToProfilePage(history)} />
       </BottomBar>
     </PageContainer>
   );
