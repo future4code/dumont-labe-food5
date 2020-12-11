@@ -25,6 +25,7 @@ const GlobalState = (props) => {
   // Variável com autorização para requisições
   const auth = { headers: { auth: token } };
 
+
   //Estado do carrinho
   const [cart, setCart] = useState([]);
   const [number, setNumber] = useState("");
@@ -33,6 +34,7 @@ const GlobalState = (props) => {
   const [state, setState] = useState("");
   const [complement, setComplement] = useState("");
   const [street, setStreet] = useState("");
+
   // Request que faz o login
   const postLogin = (history) => {
     const body = {
@@ -157,6 +159,7 @@ const GlobalState = (props) => {
     setComplement,
     setCart,
   };
+
   const requests = {
     postLogin,
     getRestaurants,

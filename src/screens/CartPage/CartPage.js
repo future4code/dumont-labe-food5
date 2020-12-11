@@ -1,16 +1,23 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Page, AdressContainer, AdressTitle, Adress, Card, SubtotalTitle, SubtotalContainer, Tax, Total, Button, PayContainer, Pay, Credit, PayTitle } from './styles'
+import { Page, AdressContainer, AdressTitle, Adress, Card, SubtotalTitle, SubtotalContainer, Tax, Total, Button, PayContainer, Cash, Credit, PayTitle } from './styles'
 import { ItemCard } from "../../components/ItemCard/ItemCard";
 import GlobalStateContext from "../../global/GlobalStateContext";
+import { Header } from '../../components/Header/Header'
 
 function CartPage() {
   const { states, setters } = useContext(GlobalStateContext);
-  const [priceToPay, setPriceToPay] = useState(0);
+  const [ priceToPay, setPriceToPay ] = useState(0);
+  const [ pay, setPay ] = useState(false);
 
+  const tax = states.restaurantDetails.shipping;
+  
+  const onChangeValue = (event) => {
+    setPay(event.target.value);
+  }
   useEffect(() => {
     let currentTotal = 0;
     states.cart.forEach((item) => {
-      currentTotal += item.price * item.amount;
+      currentTotal += item.price * item.amount + tax;
     });
     setPriceToPay(currentTotal);
   }, [states.cart]);
@@ -30,23 +37,28 @@ function CartPage() {
     return (
       <ItemCard
         key={item.id}
-        photoUrl={item.photoUrl[0]}
+        photoUrl={item.photoUrl}
         name={item.name}
         description={item.description}
         price={item.price}
         amount={item.amount}
         removeItem={() => removeItemFromCart(item)}
+        textButton="Remover"
       />
     );
   });
+
+  console.log(states.cart)
+  
   return (
     <Page>
+      <Header />
       <AdressContainer>
         <AdressTitle>Endereço de entrega</AdressTitle>
         <Adress>Rua Alessandra Viera, 42</Adress>
       </AdressContainer>
       <Card>{productsList.length > 0 ? productsList : <p>Carrinho Vazio</p>}</Card>
-      <Tax>Frete R$ 0,00</Tax>
+      <Tax>Frete R$ {states.restaurantDetails.shipping ? states.restaurantDetails.shipping : "0. 00"} </Tax>
       <SubtotalContainer>
         <SubtotalTitle>SUBTOTAL</SubtotalTitle>
         <Total>  R${priceToPay.toFixed(2)}</Total>
@@ -55,16 +67,19 @@ function CartPage() {
       <hr />
       <PayContainer>
         <Pay>
-          <input type="radio" />
-          Dinheiro
+          <input type="radio" name="paymentmethod" id="money" value="Dinheiro" />
+          <label for="money"> Dinheiro </label>
         </Pay>
         <Credit>
-          <input type="radio" />
-          Cartão de crédito
+          <input type="radio" name="paymentmethod" id="creditcard" value="Cartão de Credito" />
+          <label for="creditcard"> Cartão de crédito </label>
+
         </Credit>
-      </PayContainer>
-      <Button>Confirmar</Button>
-    </Page>
+        </PayContainer>
+          <Button>Confirmar</Button>
+      </Page>
+    </div>
+
   );
 }
 

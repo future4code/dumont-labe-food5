@@ -5,6 +5,7 @@ import { Header } from "../../components/Header/Header";
 import { useHistory } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 
+
 import { signup } from "../../services/user";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
@@ -23,6 +24,7 @@ import {
   Wrapper,
   SignUpPageContainer,
 } from "./styled-SignUpPage";
+
 import { useUnprotectedPage } from "../../hooks/useUnprotectedPage";
 import { goToAddAdressPage } from "../../router/Coordinator";
 
