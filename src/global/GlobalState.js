@@ -3,7 +3,7 @@ import axios from "axios";
 import GlobalStateContext from "./GlobalStateContext";
 import { baseUrl } from "../constants/baseUrl";
 import { useHistory } from "react-router-dom";
-import { goToFeedPage } from "../router/Coordinator";
+import { goToFeedPage, goToLoginPage } from "../router/Coordinator";
 
 const GlobalState = (props) => {
   const [email, setEmail] = useState("");
@@ -24,17 +24,15 @@ const GlobalState = (props) => {
   const token = localStorage.getItem("token");
   // Variável com autorização para requisições
   const auth = { headers: { auth: token } };
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("") 
-      // Estado com todos os restaurantes
-    const [restaurants, setRestaurants] = useState([])
-    // Estado com produtos do restaurante escolhido
-    const [restaurantProducts, setRestaurantProducts] = useState([])
-      // Estado com detalhes do restaurante escolhido
-      const [restaurantDetails, setRestaurantDetails] = useState([])
-    //Estado do carrinho
-      const [cart, setCart] = useState([]);
 
+  //Estado do carrinho
+  const [cart, setCart] = useState([]);
+  const [number, setNumber] = useState("");
+  const [neighbourhood, setNeighbourhood] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [complement, setComplement] = useState("");
+  const [street, setStreet] = useState("");
   // Request que faz o login
   const postLogin = (history) => {
     const body = {
@@ -58,7 +56,6 @@ const GlobalState = (props) => {
       });
     setEmail("");
     setPassword("");
-    // setTimeout(token ? goToFeedPage(history) : alert("NÃO AUTORIZADO"), 3000);
   };
 
   // Request de pegar os restaurantes
@@ -107,6 +104,29 @@ const GlobalState = (props) => {
       });
   };
 
+  // Request para adicionar Endereço
+
+  const putAddAddress = (history) => {
+    const body = {
+      street: street,
+      number: number,
+      neighbourhood: neighbourhood,
+      city: city,
+      state: state,
+      complement: complement,
+    };
+    console.log(auth);
+    axios
+      .put(`${baseUrl}/address`, body, auth)
+      .then((resposta) => {
+        console.log("Resposta request addAddress", resposta.data);
+        goToLoginPage(history);
+      })
+      .catch((err) => {
+        console.log("Erro RequestaddAddress", err.message);
+      });
+  };
+
   const states = {
     email,
     password,
@@ -116,13 +136,33 @@ const GlobalState = (props) => {
     profileData,
     category,
     filteredByName,
+    street,
+    number,
+    neighbourhood,
+    city,
+    state,
+    complement,
+    cart,
   };
-  const setters = { setEmail, setPassword, setCategory, setFilteredByName };
+  const setters = {
+    setEmail,
+    setPassword,
+    setCategory,
+    setFilteredByName,
+    setStreet,
+    setNumber,
+    setNeighbourhood,
+    setCity,
+    setState,
+    setComplement,
+    setCart,
+  };
   const requests = {
     postLogin,
     getRestaurants,
     getRestaurantDetails,
     getProfileData,
+    putAddAddress,
   };
 
   const data = { states, setters, requests };
