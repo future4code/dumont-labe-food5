@@ -68,7 +68,7 @@ export const SubtotalContainer = styled.div`
   padding-bottom: 0.75rem;
 `
 
-export const PayContainer = styled.div`
+export const PayContainer = styled.form`
   display: flex;
   flex-direction: column;
   padding-top: 10px;

@@ -48,29 +48,32 @@ function CartPage() {
     );
   });
 
+  console.log(states.cart)
+  
   return (
-    <div>
-      <Header text="4Food" />
-      <Page>
-        <AdressContainer>
-          <AdressTitle>Endereço de entrega</AdressTitle>
-          <Adress>Rua Alessandra Viera, 42</Adress>
-        </AdressContainer>
-        <Card>{productsList.length > 0 ? productsList : <p>Carrinho Vazio</p>}</Card>
-        <Tax>Frete R$ {states.restaurantDetails.shipping ? states.restaurantDetails.shipping : "0. 00"} </Tax>
-        <SubtotalContainer>
-          <SubtotalTitle>SUBTOTAL</SubtotalTitle>
-          <Total>  R${priceToPay.toFixed(2)}</Total>
-        </SubtotalContainer>
-        <PayTitle>Forma de pagamento</PayTitle>
-        <PayContainer onChange={onChangeValue}>
-          <Cash>
-          <input type="radio" value="cash" name="pay" />
-          Dinheiro
-        </Cash>
-            <Credit>
-              <input type="radio" value="credit" name="pay" />
-          Cartão de crédito
+    <Page>
+      <Header />
+      <AdressContainer>
+        <AdressTitle>Endereço de entrega</AdressTitle>
+        <Adress>Rua Alessandra Viera, 42</Adress>
+      </AdressContainer>
+      <Card>{productsList.length > 0 ? productsList : <p>Carrinho Vazio</p>}</Card>
+      <Tax>Frete R$ {states.restaurantDetails.shipping ? states.restaurantDetails.shipping : "0. 00"} </Tax>
+      <SubtotalContainer>
+        <SubtotalTitle>SUBTOTAL</SubtotalTitle>
+        <Total>  R${priceToPay.toFixed(2)}</Total>
+      </SubtotalContainer>
+      <PayTitle>Forma de pagamento</PayTitle>
+      <hr />
+      <PayContainer>
+        <Pay>
+          <input type="radio" name="paymentmethod" id="money" value="Dinheiro" />
+          <label for="money"> Dinheiro </label>
+        </Pay>
+        <Credit>
+          <input type="radio" name="paymentmethod" id="creditcard" value="Cartão de Credito" />
+          <label for="creditcard"> Cartão de crédito </label>
+
         </Credit>
         </PayContainer>
           <Button>Confirmar</Button>

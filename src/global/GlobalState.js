@@ -24,6 +24,7 @@ const GlobalState = (props) => {
   const token = localStorage.getItem("token");
   // Variável com autorização para requisições
   const auth = { headers: { auth: token } };
+  // Estado que guarda as informações do carrinho
   const [cart, setCart] = useState([]);
   // Request que faz o login
   const postLogin = (history) => {
