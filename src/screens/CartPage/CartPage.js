@@ -6,10 +6,14 @@ import { Header } from '../../components/Header/Header'
 
 function CartPage() {
   const { states, setters } = useContext(GlobalStateContext);
-  const [ priceToPay, setPriceToPay] = useState(0);
-    
-  const tax = states.restaurantDetails.shipping;
+  const [ priceToPay, setPriceToPay ] = useState(0);
+  const [ pay, setPay ] = useState(false);
 
+  const tax = states.restaurantDetails.shipping;
+  
+  const onChangeValue = (event) => {
+    setPay(event.target.value);
+  }
   useEffect(() => {
     let currentTotal = 0;
     states.cart.forEach((item) => {
@@ -59,17 +63,17 @@ function CartPage() {
           <Total>  R${priceToPay.toFixed(2)}</Total>
         </SubtotalContainer>
         <PayTitle>Forma de pagamento</PayTitle>
-        <PayContainer>
+        <PayContainer onChange={onChangeValue}>
           <Cash>
-            <input type="radio" />
+          <input type="radio" value="cash" name="pay" />
           Dinheiro
         </Cash>
-          <Credit>
-            <input type="radio" />
+            <Credit>
+              <input type="radio" value="credit" name="pay" />
           Cartão de crédito
         </Credit>
         </PayContainer>
-        <Button>Confirmar</Button>
+          <Button>Confirmar</Button>
       </Page>
     </div>
 
