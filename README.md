@@ -8,13 +8,17 @@
 
 ### Link do Surge
 
-http://afraid-trip.surge.sh/
+https://precious-fuel.surge.sh
 
-### Funcionalidades
+### Funcionalidades Ok
 - Login
 - SignUP
 - Feed
 - Carrinho
-- Endereco
+- Endereço
 - Alterar Perfil
+
+### Não Funciona
+
+- Editar endereço
 
